@@ -7,3 +7,4 @@ install:
 #	sudo chown -R ${USER} ./project
 	cp project/.env.example project/.env
 	docker-compose exec app php artisan key:generate
+	docker-compose exec app php artisan migrate
