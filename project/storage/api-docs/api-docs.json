@@ -1,0 +1,167 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Guest API",
+        "description": "API для управления гостями",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/guests": {
+            "get": {
+                "tags": [
+                    "guests"
+                ],
+                "summary": "Получить список всех гостей",
+                "operationId": "24fa7634e5c47c7d7c1f0538b4f231a8",
+                "responses": {
+                    "200": {
+                        "description": "Список гостей успешно получен"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "guests"
+                ],
+                "summary": "Создать нового гостя",
+                "operationId": "2d4d9f91fe406164ae8f568a8921e07e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Guest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Гость успешно создан"
+                    }
+                }
+            }
+        },
+        "/api/guests/{id}": {
+            "get": {
+                "tags": [
+                    "guests"
+                ],
+                "summary": "Получить информацию о конкретном госте",
+                "operationId": "f5f18c6aa22cdeab57c76c875e8fc704",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID гостя",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Информация о госте успешно получена"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "guests"
+                ],
+                "summary": "Обновить информацию о конкретном госте",
+                "operationId": "6bc70c702efa672eb92b72111873ddd3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID гостя",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Guest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Гость успешно обновлен"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "guests"
+                ],
+                "summary": "Удалить конкретного гостя",
+                "operationId": "9cfad5d3c228998a732fa90743fcc295",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID гостя",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Гость успешно удален"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Guest": {
+                "required": [
+                    "first_name",
+                    "last_name",
+                    "phone"
+                ],
+                "properties": {
+                    "first_name": {
+                        "type": "string",
+                        "example": "Иван"
+                    },
+                    "last_name": {
+                        "type": "string",
+                        "example": "Иванов"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "ivan@example.com"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "example": "+79161234567"
+                    },
+                    "country": {
+                        "type": "string",
+                        "example": "Россия"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "guests",
+            "description": "guests"
+        }
+    ]
+}
