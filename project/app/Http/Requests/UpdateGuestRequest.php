@@ -11,7 +11,7 @@ class UpdateGuestRequest extends FormRequest
         return [
             'first_name' => 'string|max:255',
             'last_name' => 'string|max:255',
-            'email' => 'nullable|email|unique:guests,email,' . $this->route('guest'),
+            'email' => 'email|unique:guests,email,' . $this->route('guest'),
             'phone' => 'string|unique:guests,phone,' . $this->route('guest') . '|regex:/^\+/',
             'country' => 'nullable|string',
         ];

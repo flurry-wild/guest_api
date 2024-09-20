@@ -9,10 +9,10 @@ class StoreGuestRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'nullable|email|unique:guests,email',
-            'phone' => 'required|string|unique:guests,phone|regex:/^\+/',
+            'first_name' => 'string|max:255',
+            'last_name' => 'string|max:255',
+            'email' => 'email|unique:guests,email',
+            'phone' => 'string|unique:guests,phone|regex:/^\+/',
             'country' => 'nullable|string|max:20',
         ];
     }
